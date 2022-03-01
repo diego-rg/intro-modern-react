@@ -1,4 +1,5 @@
 import React from "react";
+import avatar from "./images/avatar.jpg"
 
 //Compoñente: código que estaría duplicado en JSX, que ten un propósito concreto, reutilizable. Nome en UpperCammelCase
 const Comment = (props) => {
@@ -6,7 +7,7 @@ const Comment = (props) => {
   return (
     <div className="comment">
       <a href="/" className="avatar">
-        <img src="/" alt="avatar" />
+        <img src={avatar} alt="avatar" />
       </a>
       <div className="content">
         <a href="/" className="author">
@@ -14,9 +15,9 @@ const Comment = (props) => {
         </a>
       </div>
       <div className="metadata">
-        <span className="date">28/2/2022 18:55:23</span>
+        <span className="date">{props.date}</span>
       </div>
-      <div className="text">Blah blah blah!</div>
+      <div className="text">{props.text}</div>
     </div>
   );
 };

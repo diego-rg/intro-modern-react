@@ -6,9 +6,9 @@ import Comment from "./Comment"; //Non fa falta poñer Comment.js xa que o fai W
 const App = () => {
   return (
     <div className="ui container comments">
-      <Comment author="Jose" />
-      <Comment author="Ana" />
-      <Comment author="Pepe" />
+      <Comment author="Jose" date="01/03/2022" text="Muahahahaha" />
+      <Comment author="Ana" date="14/02/2022" text="Hohoho" />
+      <Comment author="Pepe" date="21/01/2022" text="Hihihi" />
     </div>
   );
 };
