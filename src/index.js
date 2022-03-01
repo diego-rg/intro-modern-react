@@ -1,29 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import Comment from "./Comment"; //Non fa falta poñer Comment.js xa que o fai Webpack
 
 //Creamos o compoñente de React:
 const App = () => {
   return (
-    <div>
-      <div className="ui container comments">
-        <div className="comment">
-            <a href="/" className="avatar">
-                <img src="/" alt="avatar" />
-            </a>
-            <div className="content">
-                <a href="/" className="author">Eu</a>
-            </div>
-            <div className="metadata">
-                <span className="date">28/2/2022 18:55:23</span>
-            </div>
-            <div className="text">
-                Blah blah blah!
-            </div>
-        </div>
-    </div>
+    <div className="ui container comments">
+      <Comment author="Jose" />
+      <Comment author="Ana" />
+      <Comment author="Pepe" />
     </div>
   );
 };
+//Props: propiedades ou sistema para pasar datos de un compoñente pai a un fillo, para logo consumilos o fillo
 
 //Renderizamos o compoñente con unha función de ReactDOM no noso index.html, dentro do div #root:
 //Tamén funciona con document.getElementById("root")
