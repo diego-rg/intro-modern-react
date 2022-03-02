@@ -7,21 +7,23 @@ import SeasonDisplay from "./SeasonDisplay";
 
 //Compoñente de clase
 class App extends React.Component {
-  constructor(props) {
-    super(props);
-
-    //Iniciamos estado, generalmente con Null se non hai datos
-    this.state = { lat: null, errMsg: "" };
-
-    window.navigator.geolocation.getCurrentPosition(
-      (position) => {
-        this.setState({ lat: position.coords.latitude });
-      },
-      (err) => {
-        this.setState({ lat: 62, errMsg: err });//Xestionamos erro e poñemos un valor aleatorio se falla (ou se usuario bloquea) para probala app
-      }
-    );
-  }
+  state = { lat: null, errMsg: "" };
+//Gracias a babel podemos refactorizar e non poñer o constructor:
+    // window.navigator.geolocation.getCurrentPosition(
+    //   (position) => {
+    //     this.setState({ lat: position.coords.latitude });
+    //   },
+    //   (err) => {
+    //     this.setState({ lat: 62, errMsg: err });//Xestionamos erro e poñemos un valor aleatorio se falla (ou se usuario bloquea) para probala app
+    //   }
+    // );
+    //Refactorizamos manexando o ciclo de vida
+    componentDidMount() {
+      window.navigator.geolocation.getCurrentPosition(
+        position => this.setState({ lat: position.coords.latitude }),
+        err => this.setState({ lat: 62, errMsg: err })//Xestionamos erro e poñemos un valor aleatorio se falla (ou se usuario bloquea) para probala app
+      );
+    }
 
   //Modificamos o código para devolver por defecto lat 62 en caso de erro.
   render() {
