@@ -11,20 +11,35 @@ class App extends React.Component {
     super(props);
 
     //Iniciamos estado, generalmente con Null se non hai datos
-    this.state = { lat: null };
+    this.state = { lat: null, errMsg: "" };
 
     window.navigator.geolocation.getCurrentPosition(
       (position) => {
         this.setState({ lat: position.coords.latitude });
       },
-      (error) => {
-        this.setState({ lat: 62 });//En vez de sacar erro, poñeos un valor aleatorio se falla (ou se usuario bloquea) para probala app
+      (err) => {
+        this.setState({ lat: 62, errMsg: err });//Xestionamos erro e poñemos un valor aleatorio se falla (ou se usuario bloquea) para probala app
       }
     );
   }
 
+  //Modificamos o código para devolver por defecto lat 62 en caso de erro.
   render() {
-    return <div>Latitude: {this.state.lat}</div>;
+    if (this.state.errMsg && this.state.lat) {
+      return(
+      <div>
+        <p>Error: {`${this.state.errMsg}. Se usará la latitud por defecto (${this.state.lat}).`}</p>
+      </div>
+      )
+    }
+    if (!this.state.errMsg && this.state.lat) {
+      return(
+      <div>
+        <p>Latitud: {this.state.lat}</p>
+      </div>
+      )
+    }
+    return <div>Cargando...</div>
   }
 }
 
