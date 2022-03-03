@@ -1,0 +1,6 @@
+.app-container {
+    display: flex;
+    border: 5px solid grey;
+    box-sizing: border-box;
+    height: 100vh;
+}

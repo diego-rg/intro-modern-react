@@ -1,3 +1,4 @@
+import "./App.css"
 import React from "react";
 import ReactDOM from "react-dom";
 // import Comment from "./Comment";
@@ -26,24 +27,24 @@ class App extends React.Component {
       );
     }
 
-  //Modificamos o código para devolver por defecto lat 62 en caso de erro.
-  render() {
+  //Refactorizamos para non ter varios return en render, xa que impide por exemplo, meter nun div os casos e é mala práctica
+  contentToRender () {
     if (this.state.errMsg && this.state.lat) {
-      return(
-      <div>
-        {/* <p>Error: {`${this.state.errMsg}. Se usará la latitud por defecto (${this.state.lat}).`}</p> */}
-        <SeasonDisplay lat= {this.state.lat}/>
-      </div>
-      )
+      return <SeasonDisplay lat= {this.state.lat}/>
     }
     if (!this.state.errMsg && this.state.lat) {
-      return(
-      <div>
-        <SeasonDisplay lat= {this.state.lat} />
-      </div>
-      )
+      return <SeasonDisplay lat= {this.state.lat} />
     }
     return <Loader msg="Esperando por el permiso de geolocalización. En caso de rechazarse, se usará la latitud por defecto." />
+  }
+
+  //Modificamos o código para devolver por defecto lat 62 en caso de erro.
+  render() {
+    return(
+      <div className="app-container">
+        {this.contentToRender()}
+      </div>
+    )
   }
 }
 
