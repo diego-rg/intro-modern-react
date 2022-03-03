@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 // import Comment from "./Comment";
 // import ApprovalCard from "./ApprovalCard"; //Non fa falta poñer Comment.js xa que o fai Webpack
 import SeasonDisplay from "./SeasonDisplay";
+import Loader from "./Loader";
 // import avatar from "./images/avatar.jpg";
 
 //Compoñente de clase
@@ -42,7 +43,7 @@ class App extends React.Component {
       </div>
       )
     }
-    return <div>Cargando...</div>
+    return <Loader msg="Esperando por el permiso de geolocalización. En caso de rechazarse, se usará la latitud por defecto." />
   }
 }
 
