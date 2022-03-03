@@ -1,5 +1,17 @@
 import React from "react";
 
+//Refactorizamos os ternarios para sacar valores en un obxeto
+const configSeason = {
+    summer: {
+        text: "Es verano... A la playa!",
+        icon: "sun"
+    },
+    winter: {
+        text: "Es invierno... A esquiar!",
+        icon: "snowflake"
+    }
+}
+
 const month = new Date().getMonth();
 
 const getSeason = (lat, month) => {
@@ -12,8 +24,8 @@ const getSeason = (lat, month) => {
 
 const SeasonDisplay = (props) => {
     const season = getSeason(props.lat, month);
-    const text = season === "winter" ? "Es invierno... A esquiar!" : "Es verano... A la playa!";
-    const icon = season === "winter" ? "snowflake" : "sun";
+    //Destructuramos usando o obxeto configSeason
+    const { text, icon } = configSeason[season];
 
     return (
         <div>
