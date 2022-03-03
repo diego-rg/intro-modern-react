@@ -31,13 +31,14 @@ class App extends React.Component {
       return(
       <div>
         <p>Error: {`${this.state.errMsg}. Se usará la latitud por defecto (${this.state.lat}).`}</p>
+        <SeasonDisplay lat= {this.state.lat}/>
       </div>
       )
     }
     if (!this.state.errMsg && this.state.lat) {
       return(
       <div>
-        <p>Latitud: {this.state.lat}</p>
+        <SeasonDisplay lat= {this.state.lat} />
       </div>
       )
     }
